@@ -1,0 +1,34 @@
+body.app-body {
+  min-height: 100vh;
+  color: #edf4ff;
+  background:
+    radial-gradient(ellipse at 6% 0%, rgba(46, 116, 160, 0.14), transparent 32rem),
+    radial-gradient(ellipse at 100% 65%, rgba(102, 77, 175, 0.12), transparent 34rem),
+    $space;
+  font-family: $body-font;
+}
+
+.app-container { min-height: 100vh; }
+
+h1, h2, h3, h4, h5, h6 { color: #f3f7ff; font-family: $headers-font; }
+
+.form-label { color: #dce8f7; font-weight: 600; }
+.form-control, .form-select {
+  min-height: 46px;
+  border: 1px solid rgba(152, 184, 225, 0.22);
+  border-radius: 0.7rem;
+  color: #edf4ff;
+  background-color: rgba(5, 11, 21, 0.72);
+
+  &:focus { border-color: $neon; color: #fff; background-color: rgba(5, 11, 21, 0.9); box-shadow: 0 0 0 0.2rem rgba(93, 228, 255, 0.14); }
+}
+
+.form-select option { color: #edf4ff; background: #101a2b; }
+.form-text, .invalid-feedback { color: $muted; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid $neon;
+  outline-offset: 3px;
+}
+
+::selection { color: #06131c; background: $neon; }

@@ -1,0 +1,12 @@
+<main class="form-page">
+  <p class="form-page__eyebrow"><%= @list.name %></p>
+  <h1 class="form-page__title">Add a movie</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <div class="form-page__actions">
+      <%= f.button :submit, "Add to list", class: "btn btn-primary" %>
+      <%= link_to "Cancel", list_path(@list), class: "btn btn-outline-light" %>
+    </div>
+  <% end %>
+</main>

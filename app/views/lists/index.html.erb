@@ -1,0 +1,29 @@
+<main class="home-page">
+  <section class="home-page__hero">
+    <p class="home-page__eyebrow">Your personal cinema archive</p>
+    <h1 class="home-page__title">Curate your next <span>watchlist.</span></h1>
+    <p class="home-page__subtitle">Build collections of films worth remembering, then keep every pick in one place.</p>
+    <div class="lists-page__toolbar">
+      <%= link_to "Create a list", new_list_path, class: "btn btn-primary" %>
+    </div>
+  </section>
+
+  <section aria-labelledby="lists-heading">
+    <div class="home-page__section-heading">
+      <h2 id="lists-heading">Your collections</h2>
+      <span class="home-page__count"><%= @lists.length %> lists</span>
+    </div>
+    <% if @lists.any? %>
+      <div class="lists-page__grid">
+        <% @lists.each do |list| %>
+          <%= link_to list_path(list), class: "lists-page__card" do %>
+            <span class="lists-page__card-name"><%= list.name %></span>
+            <span class="lists-page__card-arrow" aria-hidden="true">↗</span>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="lists-page__empty">No collections yet. Create your first list to get started.</p>
+    <% end %>
+  </section>
+</main>

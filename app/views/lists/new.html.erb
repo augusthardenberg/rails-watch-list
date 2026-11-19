@@ -1,0 +1,11 @@
+<main class="form-page">
+  <p class="form-page__eyebrow">New collection</p>
+  <h1 class="form-page__title">Create a watchlist</h1>
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <div class="form-page__actions">
+      <%= f.button :submit, "Create list", class: "btn btn-primary" %>
+      <%= link_to "Cancel", lists_path, class: "btn btn-outline-light" %>
+    </div>
+  <% end %>
+</main>

@@ -1,0 +1,40 @@
+<main class="lists-page">
+  <header class="lists-page__header">
+    <p class="lists-page__eyebrow">Movie collection</p>
+    <h1 class="lists-page__title"><%= @list.name %></h1>
+    <div class="lists-page__toolbar">
+      <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+      <%= link_to "All lists", lists_path, class: "btn btn-outline-light" %>
+    </div>
+  </header>
+
+  <% if @list.bookmarks.any? %>
+    <section class="movie-list" aria-label="Movies in this list">
+      <% @list.bookmarks.each do |bookmark| %>
+        <article class="movie-list__item">
+          <div class="movie-list__poster">
+            <% if bookmark.movie.poster_url.present? %>
+              <%= image_tag bookmark.movie.poster_url, alt: "Poster for #{bookmark.movie.title}", loading: "lazy" %>
+            <% else %>
+              <div class="movie-list__poster-placeholder" aria-label="No poster available">No poster</div>
+            <% end %>
+          </div>
+          <div class="movie-list__details">
+            <h2 class="movie-list__title"><%= bookmark.movie.title %></h2>
+            <p class="movie-list__overview"><%= bookmark.movie.overview %></p>
+            <span class="movie-list__rating">★ <%= bookmark.movie.rating %></span>
+            <% if bookmark.comment.present? %>
+              <p class="movie-list__comment">“<%= bookmark.comment %>”</p>
+            <% end %>
+          </div>
+          <div class="movie-list__actions">
+            <%= link_to "Delete", list_bookmark_path(@list, bookmark), class: "btn btn-danger",
+                data: { turbo_method: :delete, turbo_confirm: "Remove this movie from the list?" } %>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  <% else %>
+    <p class="lists-page__empty">This list is waiting for its first movie.</p>
+  <% end %>
+</main>

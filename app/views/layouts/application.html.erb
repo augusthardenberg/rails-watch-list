@@ -23,7 +23,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="app-body">
+    <div class="container app-container">
+      <%= yield %>
+    </div>
   </body>
 </html>
